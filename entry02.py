@@ -14,31 +14,31 @@ seg_list = list(jieba.cut(text))
 
 # 3. 取得詞與數量的 dictionary，並計算 total frequency
 total_frequency = 0
-word_dict = dict()
+word_count_dict = dict()
 for word in seg_list:
     if word in exclusion_list:
         continue
 
     total_frequency += 1
-    if word not in word_dict:
-        word_dict[word] = 1
+    if word not in word_count_dict:
+        word_count_dict[word] = 1
     else:
-        count = word_dict[word]
-        word_dict[word] = count + 1
+        count = word_count_dict[word]
+        word_count_dict[word] = count + 1
 
 # 4.
 c = 0
 
 tf_dict = dict()
-for w in word_dict:
-    count = word_dict[w]
+for w in word_count_dict:
+    count = word_count_dict[w]
     tf = count / total_frequency
     tf_dict[w] = tf
     print('%s: %.3f' % (w, tf))
     c += tf
 # tf_dict[w] = freq
 
-print('c=', c)
+# print('c=', c)
 
 # 4. get total frequency
 # total_frequency = 0
@@ -46,7 +46,7 @@ print('c=', c)
     # print('%s: %d' % (i, word_dict[i]))
 
 # total_frequency += word_dict[i]
-print('total frequency=%d' % total_frequency)
+# print('total frequency=%d' % total_frequency)
 
 # 4. 計算 term frequency
 

@@ -1,3 +1,6 @@
-d = {'a': 1, 'b': 2}
+import os
 
-print('a' in d)
+my_dir = './corpus'
+
+file_list = os.listdir(my_dir)
+print(file_list)
